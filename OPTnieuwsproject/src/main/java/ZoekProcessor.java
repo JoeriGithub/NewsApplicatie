@@ -9,7 +9,12 @@ public class ZoekProcessor {
     private Integer tijdsinterval;
 
     public void process(String userWebsite, Integer userTijdsinterval, String userZoekterm) {
+        
+        zoekterm = userZoekterm;
+        website = userWebsite;
+        tijdsinterval = userTijdsinterval;
 
+        //kijkt of de ingevoerde parameters leeg zijn
         if(userZoekterm == "null"){
             parameter = new Zoekterm(userWebsite, userTijdsinterval, userZoekterm);
             System.out.printf("niks ingevuld bij zoekterm, vervangen door: %s\n", parameter.zoekterm);
@@ -25,8 +30,7 @@ public class ZoekProcessor {
             System.out.printf("niks ingevuld bij website, vervangen door: %s\n", parameter.website);
             website = parameter.website;
         }
-        naarUitvoeren(website, tijdsinterval, zoekterm);
-        //ZoekactieUitvoeren.VerzamelGegevens(parameter.zoekterm, parameter.tijdsinterval, parameter.website);
+        naarUitvoeren(zoekterm, tijdsinterval, website);
 
     }
     public void naarUitvoeren(String website, Integer tijdsinterval, String zoekterm) {
