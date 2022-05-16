@@ -9,5 +9,8 @@
         <module name="OPTnieuwsproject" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="OPTnieuwsproject" target="16" />
+    </bytecodeTargetLevel>
   </component>
 </project>

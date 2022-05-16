@@ -8,29 +8,42 @@ public class ZoekProcessor {
     private String website;
     private Integer tijdsinterval;
 
-    public void process(String userWebsite, Integer userTijdsinterval, String userZoekterm) {
+    public static int testwaardecounter;//Dit is om de testen goed uit te kunnen voeren.
 
-        if(userZoekterm == "null"){
+    public static int getTestwaardeCounter(){
+        int temptestwaardecounter = testwaardecounter;
+        testwaardecounter = 0;
+        return temptestwaardecounter;
+    }
+
+    public void process(String userWebsite, Integer userTijdsinterval, String userZoekterm) {
+        zoekterm = userZoekterm;
+        website = userWebsite;
+        tijdsinterval = userTijdsinterval;
+
+
+        if (userZoekterm == "null"){
             parameter = new Zoekterm(userWebsite, userTijdsinterval, userZoekterm);
             System.out.printf("niks ingevuld bij zoekterm, vervangen door: %s\n", parameter.zoekterm);
             zoekterm = parameter.zoekterm;
+            testwaardecounter++;//voor testen
         }
         if (userTijdsinterval == 0){
             parameter = new Tijdsinterval(userWebsite,userTijdsinterval,userZoekterm);
             System.out.printf("niks ingevuld bij tijdsinterval, vervangen door: %s\n", parameter.tijdsinterval);
             tijdsinterval = parameter.tijdsinterval;
+            testwaardecounter++;//voor testen
         }
-        if(userWebsite == "null") {
+        if (userWebsite == "null") {
             parameter = new Website(userWebsite, userTijdsinterval, userZoekterm);
             System.out.printf("niks ingevuld bij website, vervangen door: %s\n", parameter.website);
             website = parameter.website;
+            testwaardecounter++;//voor testen
         }
-        naarUitvoeren(website, tijdsinterval, zoekterm);
-        //ZoekactieUitvoeren.VerzamelGegevens(parameter.zoekterm, parameter.tijdsinterval, parameter.website);
+        naarUitvoeren(zoekterm, tijdsinterval, website);
 
     }
     public void naarUitvoeren(String website, Integer tijdsinterval, String zoekterm) {
-
         new ZoekactieUitvoeren().VerzamelGegevens(website,tijdsinterval,zoekterm);
     }
 
