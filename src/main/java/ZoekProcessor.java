@@ -17,12 +17,13 @@ public class ZoekProcessor {
     }
 
     public void process(String userWebsite, Integer userTijdsinterval, String userZoekterm) {
+        
         zoekterm = userZoekterm;
         website = userWebsite;
         tijdsinterval = userTijdsinterval;
 
-
-        if (userZoekterm == "null"){
+        //kijkt of de ingevoerde parameters leeg zijn
+        if(userZoekterm == "null"){
             parameter = new Zoekterm(userWebsite, userTijdsinterval, userZoekterm);
             System.out.printf("niks ingevuld bij zoekterm, vervangen door: %s\n", parameter.zoekterm);
             zoekterm = parameter.zoekterm;
