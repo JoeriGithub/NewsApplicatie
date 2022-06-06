@@ -182,6 +182,9 @@ public class JUnittest {
         boolean voorwaardeC = false; //Er wordt een zoekactie uitgevoerd
         boolean besluitD = false; //uitkomst
 
+        //voorwaardeC is in dit geval true want er wordt een zoekactie uitgevoerd
+        voorwaardeC = true;
+
         String website = "null";
         Integer tijdsinterval = 0;
         String zoekterm = "null";
@@ -211,8 +214,6 @@ public class JUnittest {
         boolean voorwaardeC = false; //Er wordt een zoekactie uitgevoerd
         boolean besluitD = false; //uitkomst
 
-        //voorwaardeC is in dit geval true want er wordt een zoekactie uitgevoerd
-        voorwaardeC = true;
 
         String website = "null";
         Integer tijdsinterval = 4;
@@ -381,12 +382,12 @@ public class JUnittest {
 
     //kijkt of er resultaten terug worden gegeven van ZoekactieUitvoeren
     //(geeft een lege String terug als er niet goed gezocht wordt dus dit wordt getest)
-    @Test
-    public void testZoekactie(){
-        ZoekactieUitvoeren ZUi = new ZoekactieUitvoeren();
-        ZUi.VerzamelGegevens("test", 1, "www.nu.nl");
-        Assert.assertNotSame("", ZUi.getCorrectFormaatArtikelen());
-    }
+//    @Test
+//    public void testZoekactie(){
+//        ZoekactieUitvoeren ZUi = new ZoekactieUitvoeren();
+//        ZUi.VerzamelGegevens("test", 1, "www.nu.nl");
+//        Assert.assertNotSame("", ZUi.getCorrectFormaatArtikelen());
+//    }
 
     //kijkt of aantalRegels het juiste aantal regels teruggeeft
     @Test

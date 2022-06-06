@@ -8,7 +8,7 @@ public class ZoekProcessor {
     private String website;
     private Integer tijdsinterval;
 
-    public static int testwaardecounter;//Dit is om de testen goed uit te kunnen voeren.
+    private static int testwaardecounter;//Dit is om de testen goed uit te kunnen voeren.
 
     public static int getTestwaardeCounter(){
         int temptestwaardecounter = testwaardecounter;
@@ -23,7 +23,7 @@ public class ZoekProcessor {
         tijdsinterval = userTijdsinterval;
 
         //kijkt of de ingevoerde parameters leeg zijn
-        if(userZoekterm == "null"){
+        if(userZoekterm.equals("null")){
             parameter = new Zoekterm(userWebsite, userTijdsinterval, userZoekterm);
             System.out.printf("niks ingevuld bij zoekterm, vervangen door: %s\n", parameter.zoekterm);
             zoekterm = parameter.zoekterm;
@@ -35,7 +35,7 @@ public class ZoekProcessor {
             tijdsinterval = parameter.tijdsinterval;
             testwaardecounter++;//voor testen
         }
-        if (userWebsite == "null") {
+        if (userWebsite.equals("null")) {
             parameter = new Website(userWebsite, userTijdsinterval, userZoekterm);
             System.out.printf("niks ingevuld bij website, vervangen door: %s\n", parameter.website);
             website = parameter.website;

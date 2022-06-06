@@ -1,10 +1,18 @@
 import java.util.*;
 
 public class VerwerkUserInput {
-
-    //krijgt de custom parameters aangegeven in de (nog te maken) GUI
-    public void startZoekProcess(String userWebsite, Integer userTijdsinterval, String userZoekterm){
-        System.out.printf("de gekregen parameters zijn:%s %d %s\n", userWebsite, userTijdsinterval, userZoekterm);
+    private String userWebsite;
+    private String userZoekterm;
+    private Integer userTijdsinterval;
+    public void startZoekProcess(){
+        Scanner input = new Scanner(System.in);
+        System.out.println("Als je een waarde niet wilt invoeren, typ dan 'null' of bij tijdsinterval '0'");
+        System.out.printf("op welke website wil je zoeken? \nje kan kiezen tussen www.nu.nl, www.wsj.com\n");
+        userWebsite = input.nextLine();
+        System.out.println("welke zoekterm wil je gebruiken?");
+        userZoekterm = input.nextLine();
+        System.out.println("wat is het tijdsinterval in dagen?");
+        userTijdsinterval = input.nextInt();
         new ZoekProcessor().process(userWebsite,userTijdsinterval,userZoekterm);
     }
 }
