@@ -7,11 +7,11 @@ public abstract class VraagWebsite implements IWebsiteFactory {
     protected String artikelFormat = "";
 
     @Override
-    public abstract String VerzamelGegevens(String zoekterm, int tijdsinterval);
+    public abstract String verzamelGegevens(String zoekterm, int tijdsinterval);
 
     @Override
-    public abstract void DatumCheck(String artikel, int tijdsinterval) throws ParseException;
+    public abstract void datumCheck(String artikel, int tijdsinterval) throws ParseException;
 
     @Override
-    public abstract void OpmaakArtikel(String artikel);
+    public abstract void opmaakArtikel(String artikel);
 }

@@ -17,7 +17,6 @@ public class ZoekProcessor {
     }
 
     public void process(String userWebsite, Integer userTijdsinterval, String userZoekterm) {
-        
         zoekterm = userZoekterm;
         website = userWebsite;
         tijdsinterval = userTijdsinterval;
@@ -45,7 +44,7 @@ public class ZoekProcessor {
 
     }
     public void naarUitvoeren(String website, Integer tijdsinterval, String zoekterm) {
-        new ZoekactieUitvoeren().VerzamelGegevens(website,tijdsinterval,zoekterm);
+        new ZoekactieUitvoeren().verzamelGegevens(website,tijdsinterval,zoekterm);
     }
 
     public String getWebsite(){

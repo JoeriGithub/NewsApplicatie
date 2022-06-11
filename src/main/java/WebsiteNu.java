@@ -12,12 +12,12 @@ import java.util.regex.Pattern;
 
 public class WebsiteNu extends VraagWebsite{
 
-    public String VerzamelGegevens(String zoekterm, int tijdsinterval) {
+    public String verzamelGegevens(String zoekterm, int tijdsinterval) {
         for (int i = 1; i < 11; i++) {
             String url = "https://search.snmmd.nl/search/?q=" + zoekterm + "&page=" + i + "&per_page=1&channel=nu2&ks=0&r=1";
             try {
                 String json = Jsoup.connect(url).ignoreContentType(true).execute().body();
-                DatumCheck(json, tijdsinterval);
+                this.datumCheck(json, tijdsinterval);
             }
             catch (IOException | ParseException e) {
                 System.err.printf("error, fout in de connectie met de website (%s)\n", e);
@@ -26,7 +26,7 @@ public class WebsiteNu extends VraagWebsite{
         return artikelFormat;
     }
 
-    public void DatumCheck(String json, int tijdsinterval) throws ParseException {
+    public void datumCheck(String json, int tijdsinterval) throws ParseException {
         String regex = "([0-9]{2}-[0-9]{2}-[0-9]{4})";
         Matcher m = Pattern.compile(regex).matcher(json);
         if (m.find()) {
@@ -37,7 +37,7 @@ public class WebsiteNu extends VraagWebsite{
             LocalDate BeginDatum = Vandaag.minusDays(tijdsinterval);
 
             if (ArtikelLocalDate.equals(BeginDatum) || ArtikelLocalDate.isAfter(BeginDatum)) {
-                OpmaakArtikel(json);
+                this.opmaakArtikel(json);
             }
         }
         else {
@@ -45,7 +45,7 @@ public class WebsiteNu extends VraagWebsite{
         }
     }
 
-    public void OpmaakArtikel(String artikel) {
+    public void opmaakArtikel(String artikel) {
         for (int i = 0; i < (artikel.length() - artikel.replace(artikel.substring(artikel.indexOf("title") + 8, artikel.indexOf("url") - 3), "").length()) / artikel.substring(artikel.indexOf("title") + 8, artikel.indexOf("url") - 3).length(); i++) {
 
             titel = artikel.substring(artikel.indexOf("title") + 8, artikel.indexOf("url") - 3);

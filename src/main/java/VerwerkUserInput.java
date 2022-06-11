@@ -1,10 +1,11 @@
 import java.util.*;
 
 public class VerwerkUserInput {
-    private String userWebsite;
-    private String userZoekterm;
-    private Integer userTijdsinterval;
-    public void startZoekProcess(){
+
+    public void startZoekProces(){
+        String userWebsite;
+        String userZoekterm;
+        Integer userTijdsinterval;
         Scanner input = new Scanner(System.in);
         System.out.println("Als je een waarde niet wilt invoeren, typ dan 'null' of bij tijdsinterval '0'");
         System.out.printf("op welke website wil je zoeken? \nje kan kiezen tussen www.nu.nl, www.wsj.com\n");
